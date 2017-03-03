@@ -8,30 +8,22 @@
 	    <!-- default CSS Bootstrap etc -->
 	    <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"/>
 	    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
-	    <!-- default JS -->
-		<script src="https://code.jquery.com/jquery.js"></script>
-		<script> //include separate html-files to this document
-			$(function(){
-				var includes = $('[data-include]');
-				jQuery.each(includes, function(){
-					var file = 'html/view/' + $(this).data('include') + '.html';
-					$(this).load(file);
-				});
-			});
-		</script>
-<!-- ////////////////////////////////////////// INCLUDE CSS/JS/HTML -LISTS ////////////////////////////////////////// -->
+<!-- /////////////////////////////  START  //// INCLUDE CSS/JS/HTML -LISTS ////////////////////////////////////////// -->
 
 
-				    <!-- CSS-files of the VIEWS -->
+
+
+
+				    <!-- CSS-files of the VIEWS 
 				    <link rel="stylesheet" type="text/css" href="css/view/header.css"/>
 				    <link rel="stylesheet" type="text/css" href="css/view/view1.css"/>
-				    <link rel="stylesheet" type="text/css" href="css/view/footer.css"/>
+				    <link rel="stylesheet" type="text/css" href="css/view/footer.css"/> -->
 
 
-				    <!-- JS-files of the VIEWS -->
-				    <script tpye="text/javascript" src="js/view/header.js"></script>
-				    <script tpye="text/javascript" src="js/view/view1.js"></script>
-				    <script tpye="text/javascript" src="js/view/footer.js"></script>
+				    <!-- JS-files of the VIEWS --
+				    <script type="text/javascript" src="js/view/header.js"></script>
+				    <script type="text/javascript" src="js/view/view1.js"></script>
+				    <script type="text/javascript" src="js/view/footer.js"></script> -->
 
 
 </head>
@@ -39,7 +31,34 @@
 
 					<!-- HTML-files of the VIEWS -->
 					<div data-include="header"></div>
-					<div data-include="view1"></div>		
+					<div data-include="view1"></div>
 					<div data-include="footer"></div>
+
+
+
+
+
+
+
+
+<!-- //////////////////////////////  END  //// INCLUDE CSS/JS/HTML -LISTS ////////////////////////////////////////// -->
+		<!-- on page "console"-div to be editet for testing purposes -->
+		<div id="console" style="position:fixed;bottom:0;display:block;font-size: 80%; background-color: black; color:white;"><b>––––– &lt;div id="CONSOLE"> in index.html –––––</b><br /></div>
+		<!-- default JS -->
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<script type="text/javascript" src="js/model/model.js"></script>
+		<script> //include separate html-files to this document
+			$(function(){
+				var includes = $('[data-include]');
+				jQuery.each(includes, function(){
+					console.log($(this).data('include'));
+					$('head').append('<link rel="stylesheet" type="text/css" href="css/view/' + $(this).data("include") + '.css"/>');
+					var file = 'html/view/' + $(this).data('include') + '.html';
+					$(this).load(file);
+					$('head').append('<script tpye="text/javascript" src="js/view/'+ $(this).data("include") + '.js"> &lt;/script>');
+					$('head').append('<script tpye="text/javascript" src="js/controller/'+ $(this).data("include") + '-controller.js"> &lt;/script>');
+				});
+			});
+		</script>
 </body>
 </html>

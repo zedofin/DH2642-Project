@@ -1,0 +1,1 @@
+putConsole("included: footer-controller.js");

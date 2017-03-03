@@ -1,0 +1,1 @@
+putConsole("included: view1.js");
