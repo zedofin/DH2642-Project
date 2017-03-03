@@ -1,1 +1,1 @@
-putConsole("included: footer-controller.js");
+putConsole("included: ––– footer-controller.js");
